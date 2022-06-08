@@ -5,3 +5,6 @@
 npm install
 npm run start
 ```
+
+截图：
+![s1](./screenshots/s1.png)
