@@ -8,13 +8,14 @@
         justify-content: center;
         background: #2c2c2c;
       }
-      #pre-poster {
+      #poster {
         margin: auto;
         margin-left: calc(30%);
-        filter: hue-rotate(20deg) grayscale(30%);
+        filter: hue-rotate(20deg) grayscale(30%)
+          drop-shadow(6px 6px 10px #f7e6d9);
       }
 
-      .input-group {
+      #input-group {
         position: absolute;
         left: 20px;
         top: 20px;
@@ -52,6 +53,9 @@
         font-weight: bold;
         margin-bottom: 12px;
       }
+      button:hover {
+        mix-blend-mode: hard-light;
+      }
     </style>
 
     <script src="./node_modules/html-gl/dist/htmlgl.min.js"></script>
@@ -83,7 +87,7 @@
   </head>
   <body>
     <svg
-      id="pre-poster"
+      id="poster"
       width="1200"
       height="900"
       style="transform: rotate(7deg); background: url('./imgs/noise.png')"
@@ -125,65 +129,48 @@
         font-size="60"
         style="fill: rgb(224, 43, 57); font-weight: bolder"
         letter-spacing="1"
-      >
-        炮打 indienova-我的一张大字报
-      </text>
+      ></text>
       <!-- STLiti -->
       <!-- STHupo -->
       <text
+        id="count"
         x="920"
         y="180"
         font-family="STLiti"
         font-size="60"
         style="fill: rgb(67, 66, 71); font-weight: bolder"
         letter-spacing="1"
-      >
-        贰叁号
-      </text>
+      ></text>
 
       <text
+        id="subtitle"
         x="100"
         y="275"
         font-family="STHupo"
         font-size="35"
         style="fill: rgb(67, 66, 71)"
         letter-spacing="1"
-      >
-        Mnikn post
-      </text>
+      ></text>
 
       <text
-        x="430"
+        id="date"
+        x="630"
         y="275"
         font-family="STHupo"
         font-size="35"
         style="fill: rgb(67, 66, 71)"
         letter-spacing="1"
-      >
-        Volume 02, Issue 23, 2022
-      </text>
+      ></text>
 
       <text
-        x="430"
-        y="275"
-        font-family="STHupo"
-        font-size="35"
-        style="fill: rgb(67, 66, 71)"
-        letter-spacing="1"
-      >
-        Volume 02, Issue 23, 2022
-      </text>
-
-      <text
+        id="year"
         x="920"
         y="275"
         font-family="STHupo"
         font-size="35"
         style="fill: rgb(67, 66, 71)"
         letter-spacing="1"
-      >
-        贰零贰贰年
-      </text>
+      ></text>
 
       <image
         id="banner1"
@@ -192,7 +179,7 @@
         height="500"
         width="600"
         preserveAspectRatio="xMidYMid slice"
-        href="./imgs/u-36138040088622WG.jpg"
+        href=""
       />
       <image
         id="banner2"
@@ -234,54 +221,43 @@
       </text>
 
       <text
+        id="copyright"
         x="470"
         y="880"
         font-family="STHupo"
         font-size="30"
         style="fill: rgb(67, 66, 71)"
         letter-spacing="1"
-      >
-        Copyright by mnikn
-      </text>
+      ></text>
     </svg>
 
-    <form class="input-group">
+    <div id="input-group">
       <label>标题</label>
-      <input type="text" minlength="1" maxlength="25" />
+      <input id="title-input" type="text" minlength="1" maxlength="25" />
 
       <label>次标题</label>
-      <input type="text" />
+      <input id="subtitle-input" type="text" />
 
       <label>年份</label>
-      <input type="number" min="1990" max="10000" />
-
-      <label>月份</label>
-      <input type="number" min="1" max="12" />
+      <input id="year-input" type="number" min="1990" max="10000" />
 
       <label>期数</label>
-      <input type="number" min="1" max="100000" />
+      <input id="count-input" type="number" min="1" max="100000" />
 
       <label>作者</label>
-      <input type="text" />
+      <input id="author-input" type="text" />
 
       <label>banner1</label>
-      <input type="file" />
+      <input id="banner1-input" type="file" accept="image/png, image/jpeg" />
 
       <label>banner2</label>
-      <input type="file" />
+      <input id="banner2-input" type="file" accept="image/png, image/jpeg" />
 
       <label>banner3</label>
-      <input type="file" />
-      <button>生成</button>
-      <button type="download">下载</button>
-    </form>
-
-    <!-- <canvas
-         id="final-poster"
-         width="1200"
-         height="900"
-         style="background: rgb(237, 229, 217)"
-         /> -->
+      <input id="banner3-input" type="file" accept="image/png, image/jpeg" />
+      <button id="generate-btn">生成</button>
+      <button id="download-btn" type="download">下载</button>
+    </div>
   </body>
   <script type="module" src="./index.js"></script>
 </html>
