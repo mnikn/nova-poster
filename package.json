@@ -4,7 +4,8 @@
     "description": "",
     "main": "index.js",
     "scripts": {
-        "start": "vite --port 3434"
+        "start": "vite --port 3434",
+        "build": "vite build"
     },
     "author": "mnikn",
     "license": "MIT",
