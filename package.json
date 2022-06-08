@@ -1,0 +1,27 @@
+{
+    "name": "nova_poster",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "start": "vite --port 3434"
+    },
+    "author": "mnikn",
+    "license": "MIT",
+    "dependencies": {
+        "canvg": "^4.0.0",
+        "dom-to-image": "^2.6.0",
+        "dom-to-image-more": "^2.10.1",
+        "html-gl": "^0.3.2",
+        "ogl": "0.0.93",
+        "regl": "^2.1.0",
+        "twgl.js": "^4.22.1"
+    },
+    "devDependencies": {
+        "http-server": "^14.1.1",
+        "vite": "^2.9.10"
+    },
+    "engines": {
+        "node": ">=14.0.0"
+    }
+}

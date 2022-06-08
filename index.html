@@ -1,0 +1,287 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <style type="text/css">
+      body {
+        display: flex;
+        align-item: center;
+        justify-content: center;
+        background: #2c2c2c;
+      }
+      #pre-poster {
+        margin: auto;
+        margin-left: calc(30%);
+        filter: hue-rotate(20deg) grayscale(30%);
+      }
+
+      .input-group {
+        position: absolute;
+        left: 20px;
+        top: 20px;
+        background: #f7e6d9;
+        display: flex;
+        flex-direction: column;
+        padding: 20px;
+        border-radius: 4px;
+      }
+
+      label {
+        font-size: 20px;
+        font-family: "SimHei";
+        font-weight: bold;
+        text-align: center;
+        margin-bottom: 4px;
+      }
+
+      input {
+        margin-bottom: 12px;
+        height: 32px;
+        border-radius: 4px;
+        font-family: "SimHei";
+        font-size: 16px;
+      }
+
+      button {
+        background: #f0ccb1;
+        padding: 10px;
+        border-radius: 12px;
+        border-radius: 1px solid #2c2c2c;
+        cursor: pointer;
+        font-family: "SimHei";
+        font-size: 16px;
+        font-weight: bold;
+        margin-bottom: 12px;
+      }
+    </style>
+
+    <script src="./node_modules/html-gl/dist/htmlgl.min.js"></script>
+    <script id="vs" type="notjs">
+      attribute vec4 position;
+
+      void main() {
+        gl_Position = position;
+      }
+    </script>
+    <script id="fs" type="notjs">
+      precision mediump float;
+
+      uniform vec2 resolution;
+      uniform float time;
+
+      void main() {
+        vec2 uv = gl_FragCoord.xy / resolution;
+        float color = 0.0;
+        // lifted from glslsandbox.com
+        color += sin( uv.x * cos( time / 3.0 ) * 60.0 ) + cos( uv.y * cos( time / 2.80 ) * 10.0 );
+        color += sin( uv.y * sin( time / 2.0 ) * 40.0 ) + cos( uv.x * sin( time / 1.70 ) * 40.0 );
+        color += sin( uv.x * sin( time / 1.0 ) * 10.0 ) + sin( uv.y * sin( time / 3.50 ) * 80.0 );
+        color *= sin( time / 10.0 ) * 0.5;
+
+        gl_FragColor = vec4( vec3( color * 0.5, sin( color + time / 2.5 ) * 0.75, color ), 1.0 );
+      }
+    </script>
+  </head>
+  <body>
+    <svg
+      id="pre-poster"
+      width="1200"
+      height="900"
+      style="transform: rotate(7deg); background: url('./imgs/noise.png')"
+    >
+      <line
+        x1="100"
+        y1="100"
+        x2="1100"
+        y2="100"
+        style="stroke: rgb(67, 66, 71); stroke-width: 8"
+      />
+      <line
+        x1="100"
+        y1="300"
+        x2="1100"
+        y2="300"
+        style="stroke: rgb(67, 66, 71); stroke-width: 2"
+      />
+      <line
+        x1="900"
+        y1="120"
+        x2="900"
+        y2="280"
+        style="stroke: rgb(67, 66, 71); stroke-width: 2"
+      />
+      <line
+        x1="920"
+        y1="220"
+        x2="1100"
+        y2="220"
+        style="stroke: rgb(67, 66, 71); stroke-width: 2"
+      />
+
+      <text
+        id="title"
+        x="100"
+        y="200"
+        font-family="STXingkai"
+        font-size="60"
+        style="fill: rgb(224, 43, 57); font-weight: bolder"
+        letter-spacing="1"
+      >
+        炮打 indienova-我的一张大字报
+      </text>
+      <!-- STLiti -->
+      <!-- STHupo -->
+      <text
+        x="920"
+        y="180"
+        font-family="STLiti"
+        font-size="60"
+        style="fill: rgb(67, 66, 71); font-weight: bolder"
+        letter-spacing="1"
+      >
+        贰叁号
+      </text>
+
+      <text
+        x="100"
+        y="275"
+        font-family="STHupo"
+        font-size="35"
+        style="fill: rgb(67, 66, 71)"
+        letter-spacing="1"
+      >
+        Mnikn post
+      </text>
+
+      <text
+        x="430"
+        y="275"
+        font-family="STHupo"
+        font-size="35"
+        style="fill: rgb(67, 66, 71)"
+        letter-spacing="1"
+      >
+        Volume 02, Issue 23, 2022
+      </text>
+
+      <text
+        x="430"
+        y="275"
+        font-family="STHupo"
+        font-size="35"
+        style="fill: rgb(67, 66, 71)"
+        letter-spacing="1"
+      >
+        Volume 02, Issue 23, 2022
+      </text>
+
+      <text
+        x="920"
+        y="275"
+        font-family="STHupo"
+        font-size="35"
+        style="fill: rgb(67, 66, 71)"
+        letter-spacing="1"
+      >
+        贰零贰贰年
+      </text>
+
+      <image
+        id="banner1"
+        x="100"
+        y="320"
+        height="500"
+        width="600"
+        preserveAspectRatio="xMidYMid slice"
+        href="./imgs/u-36138040088622WG.jpg"
+      />
+      <image
+        id="banner2"
+        x="720"
+        y="320"
+        height="215"
+        width="400"
+        preserveAspectRatio="xMidYMid slice"
+        href=""
+      />
+      <text
+        x="850"
+        y="560"
+        font-family="STHupo"
+        font-size="30"
+        style="fill: rgb(67, 66, 71)"
+        letter-spacing="1"
+      >
+        Dev logs
+      </text>
+      <image
+        id="banner3"
+        x="720"
+        y="570"
+        height="215"
+        width="400"
+        preserveAspectRatio="xMidYMid slice"
+        href=""
+      />
+      <text
+        x="880"
+        y="815"
+        font-family="STHupo"
+        font-size="30"
+        style="fill: rgb(67, 66, 71)"
+        letter-spacing="1"
+      >
+        News
+      </text>
+
+      <text
+        x="470"
+        y="880"
+        font-family="STHupo"
+        font-size="30"
+        style="fill: rgb(67, 66, 71)"
+        letter-spacing="1"
+      >
+        Copyright by mnikn
+      </text>
+    </svg>
+
+    <form class="input-group">
+      <label>标题</label>
+      <input type="text" minlength="1" maxlength="25" />
+
+      <label>次标题</label>
+      <input type="text" />
+
+      <label>年份</label>
+      <input type="number" min="1990" max="10000" />
+
+      <label>月份</label>
+      <input type="number" min="1" max="12" />
+
+      <label>期数</label>
+      <input type="number" min="1" max="100000" />
+
+      <label>作者</label>
+      <input type="text" />
+
+      <label>banner1</label>
+      <input type="file" />
+
+      <label>banner2</label>
+      <input type="file" />
+
+      <label>banner3</label>
+      <input type="file" />
+      <button>生成</button>
+      <button type="download">下载</button>
+    </form>
+
+    <!-- <canvas
+         id="final-poster"
+         width="1200"
+         height="900"
+         style="background: rgb(237, 229, 217)"
+         /> -->
+  </body>
+  <script type="module" src="./index.js"></script>
+</html>
